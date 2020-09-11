@@ -1,0 +1,12 @@
+
+String:
+
+- find:
+    -- s.find('item') will return -1 if not found otherwise location
+
+- In C++ we can replace values from any position of string not in python. 
+    for example:
+    s = "abc"
+    s[0] = 'z'
+    -> In c++ , s = zbc
+    -> In python, error
