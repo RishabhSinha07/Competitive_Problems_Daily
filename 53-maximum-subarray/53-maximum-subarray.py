@@ -9,7 +9,7 @@ class Solution:
         max = 6
         cmax = 4-1+2+1 so on
         '''
-        max_value = max(nums)
+        max_value = -float('inf')
         temp = 0
         for i in nums:
             temp+=i
