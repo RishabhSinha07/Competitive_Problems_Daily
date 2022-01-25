@@ -12,6 +12,8 @@ class Solution:
         And whenever we get mid we can check if target is present b/w the value nums[left] to nums[mid] or
         nums[mid] to nums[right]. And based on that we can choose the path for BS.
         
+        One key factor to notice here is the pivot element. It can be in either half. And we should check the
+        half for which left<right value because it will be consistent for bs
         '''
         
         left, right = 0, len(nums)-1
