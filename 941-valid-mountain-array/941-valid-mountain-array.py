@@ -1,24 +1,13 @@
 class Solution:
     def validMountainArray(self, arr: List[int]) -> bool:
-        '''
-        First set of values should increase always and 
-        whenever we find a value lesser than the current
-        from then it should decrease. 
-        '''
-        if len(arr)<3:
-            return False
+        N = len(arr)
+        left, right = 0, N-1
         
-        inc = True
+        while left < N-1 and arr[left]<arr[left+1]:
+            left+=1
         
-        for i in range(1,len(arr)-1):
-            if arr[i]==arr[i+1] or arr[i] == arr[i-1]:
-                return False
-            elif arr[i-1]<arr[i]>arr[i+1] and inc:
-                inc = False
-            elif not arr[i-1]<arr[i]<arr[i+1] and inc:
-                return False
-            elif not arr[i-1]>arr[i]>arr[i+1] and not inc:
-                return False
+        while right > 0 and arr[right]<arr[right-1]:
+            right-=1
         
-        return not inc
-            
+        print(left,right)
+        return left==right and left!=0 and right!=N-1
