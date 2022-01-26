@@ -28,11 +28,11 @@ class Solution:
         
         a = dfs(root1,[])
         b = dfs(root2,[])
-#         if len(a) == 0:
-#             return b
+        if len(a) == 0:
+            return b
         
-#         if len(b) == 0:
-#             return a
+        if len(b) == 0:
+            return a
         
         res = []
         
