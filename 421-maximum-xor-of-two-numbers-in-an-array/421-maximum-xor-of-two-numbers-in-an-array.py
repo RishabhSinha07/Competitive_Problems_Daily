@@ -1,7 +1,6 @@
 class TrieNode:
     def __init__(self):
         self.child = {}
-        self.end = False
 
 class Trie:
     def __init__(self):
@@ -9,33 +8,24 @@ class Trie:
 
     def insert(self, value):
         temp = self.node
-        for i in range(len(value)):
-            if value[i] not in temp.child:
-                temp.child[value[i]] = TrieNode()
-            temp = temp.child[value[i]]
-        temp.end = True
+        for i in value:
+            if i not in temp.child:temp.child[i] = TrieNode()
+            temp = temp.child[i]
 
-    def check(self,value):
-        org = value
+    def check(self, value):
+        original_value = value
         value = bin(1<<32|value)[3:]
+        
         temp, res = self.node, []
-        for i in range(len(value)):
-            if value[i]=='1':
-                if '0' in temp.child:
-                    res.append('0')
-                    temp = temp.child['0']
-                else:
-                    res.append('1')
-                    temp = temp.child['1']
+        for i in value:
+            if (i=='1' and '0' in temp.child) or (i=='0' and '1' not in temp.child):
+                res.append('0')
+                temp = temp.child['0']
             else:
-                if '1' in temp.child:
-                    res.append('1')
-                    temp = temp.child['1']
-                else:
-                    res.append('0')
-                    temp = temp.child['0']
+                res.append('1')
+                temp = temp.child['1']
                     
-        return int(''.join(res),2)^org
+        return int(''.join(res),2)^original_value
 
 
 
