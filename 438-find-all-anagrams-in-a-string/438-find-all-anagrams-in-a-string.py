@@ -6,6 +6,10 @@ class Solution:
         res = []
         
         for index, i in enumerate(s):
+            if r[i] == 0:
+                while q: q.popleft()
+                continue
+                    
             q.append(i)
             if len(q) == len(p):
                 temp = collections.Counter(q)
