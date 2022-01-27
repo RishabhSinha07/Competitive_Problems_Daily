@@ -17,7 +17,7 @@ class Trie:
 
     def check(self,value):
         org = value
-        value = bin(1<<33|value)[3:]
+        value = bin(1<<32|value)[3:]
         temp, res = self.node, []
         for i in range(len(value)):
             if value[i]=='1':
@@ -44,7 +44,7 @@ class Solution:
         t = Trie()
         res = 0
         for i in nums:
-            t.insert(bin(1<<33|i)[3:])
+            t.insert(bin(1<<32|i)[3:])
         
         for i in nums:
             res = max(res, t.check(i))
