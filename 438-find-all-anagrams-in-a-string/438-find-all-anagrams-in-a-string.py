@@ -1,23 +1,23 @@
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
-        q = collections.deque()
-        r = collections.Counter(p)
+        # Variable for result and tracking substing value freq
+        res, tracker = [], collections.defaultdict(int)
+        # Queue and map
+        q, testcase = collections.deque(), collections.Counter(p)
         
-        res = []
-        temp = collections.defaultdict(int)
-        for index, i in enumerate(s):
-            if r[i] == 0:
-                while q: 
-                    val=q.popleft()
-                    temp[val]-=1
+        
+        for index, char in enumerate(s):
+            if testcase[char] == 0:
+                while q: tracker[q.popleft()]-=1
                 continue
                     
-            q.append(i)
-            temp[i]+=1
+            q.append(char)
+            tracker[char]+=1
+            
             if len(q) == len(p):
-                if temp == r:
+                if tracker == testcase:
                     res.append(index-len(p)+1)
-                val = q.popleft()
-                temp[val]-=1
+                
+                tracker[q.popleft()]-=1
         
         return res
