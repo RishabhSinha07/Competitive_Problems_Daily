@@ -16,16 +16,16 @@ class Trie:
         original_value = value
         value = bin(1<<32|value)[3:]
         
-        temp, res = self.node, []
+        temp, res = self.node, ""
         for i in value:
             if (i=='1' and '0' in temp.child) or (i=='0' and '1' not in temp.child):
-                res.append('0')
+                res+='0'
                 temp = temp.child['0']
             else:
-                res.append('1')
+                res+='1'
                 temp = temp.child['1']
                     
-        return int(''.join(res),2)^original_value
+        return int(res,2)^original_value
 
 
 
