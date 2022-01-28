@@ -25,7 +25,7 @@ class Solution:
             
             nx, ny, count = x+path[i][0], y+path[i][1], 0
             while  nx < 0 or nx >= R or ny < 0 or ny >= C or (nx,ny) in visited:
-                if count > 5:
+                if count > 4:
                     break
                 i = (i+1)%4
                 nx, ny = x+path[i][0], y+path[i][1]
