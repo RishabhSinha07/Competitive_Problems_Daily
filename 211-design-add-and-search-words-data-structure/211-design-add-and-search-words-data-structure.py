@@ -10,7 +10,7 @@ TC : 500*N where N = len(input)
 class Node:
     def __init__(self):
         self.child = {}
-        self.end = 0
+        self.end = False
 
 class WordDictionary:
 
@@ -23,17 +23,14 @@ class WordDictionary:
             if char not in temp.child:
                 temp.child[char] = Node()
             temp = temp.child[char]
-        temp.end = 1
+        temp.end = True
 
     def search(self, word: str) -> bool:
         temp = self.node
         
         def dfs(node, pos, word):
             if pos >= len(word):
-                if node.end == 1:
-                    return True
-                else:
-                    return False
+                return node.end
             if word[pos] != '.' and word[pos] not in node.child:
                 return False
             if word[pos] == '.':
