@@ -10,6 +10,7 @@ class Solution:
         The main thing here is to understnad when to switch. It is possible only when:
         1. when we reach the boundary
         2. when we encounter already visited element
+        3. If all the 4 sides are visited we need to stop
         
         TC : O(n**2)
         '''
@@ -20,12 +21,11 @@ class Solution:
         x, y, i = 0, 0, 0
         
         for _ in range(R*C):
-            print(x,y)
             result.append(matrix[x][y])
             
             nx, ny, count = x+path[i][0], y+path[i][1], 0
             while  nx < 0 or nx >= R or ny < 0 or ny >= C or (nx,ny) in visited:
-                if count > 4:
+                if count > 3:
                     break
                 i = (i+1)%4
                 nx, ny = x+path[i][0], y+path[i][1]
