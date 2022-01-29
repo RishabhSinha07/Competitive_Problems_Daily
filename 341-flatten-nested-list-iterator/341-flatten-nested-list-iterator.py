@@ -26,29 +26,25 @@ class NestedIterator:
         for value in nestedList:
             if value.isInteger():
                 self.res.append(value.getInteger())
-            else:
-                self.res+=self.dfs(value)
-        
-        self.size = len(self.res)
+                continue
+            self.res+=self.dfs(value)
     
     def dfs(self, node):
-        if node.isInteger():
-            return node.getInteger()
+        if node.isInteger():return node.getInteger()
         res = []
         for x in node.getList():
             if x.isInteger():
                 res.append(x.getInteger())
-            else:
-                res+=self.dfs(x)
+                continue
+            res+=self.dfs(x)
         return res
 
     
     def next(self) -> int:
-        self.size-=1
         return self.res.pop(0)
     
     def hasNext(self) -> bool:
-         return self.size > 0
+         return len(self.res) > 0
 
 # Your NestedIterator object will be instantiated and called as such:
 # i, v = NestedIterator(nestedList), []
