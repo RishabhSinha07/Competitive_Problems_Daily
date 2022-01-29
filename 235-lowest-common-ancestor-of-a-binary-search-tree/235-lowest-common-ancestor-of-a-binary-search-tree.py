@@ -16,12 +16,10 @@ class Solution:
         def dfs(node, l, r):
             if node is None:
                 return
-            if l <= node.val <= r:
-                return node
             if node.val > l and node.val > r:
                 return dfs(node.left, l, r)
             if node.val < l and node.val < r:
                 return dfs(node.right, l, r)
-        
+            return node
         
         return dfs(root, l, r)
