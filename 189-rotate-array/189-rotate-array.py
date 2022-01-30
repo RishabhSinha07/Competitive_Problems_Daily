@@ -3,9 +3,10 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        N, temp = len(nums), [x for x in nums]
+        k = k%len(nums)
         
-        for i in range(N):
-            pos = (i+k)%N
-            nums[pos] = temp[i]
+        nums.reverse()
+        nums[:k] = nums[:k][::-1]
+        nums[k:] = nums[k:][::-1]
+        
         
