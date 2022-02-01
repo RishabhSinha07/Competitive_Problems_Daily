@@ -10,27 +10,16 @@ class Node:
 
 class Solution:
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
-        if root is None:
-            return root
+        if not root: return root
         
-        q = collections.deque()
-        q.append([root])
+        def dfs(root):
+            if not root or not root.left:
+                return
+            root.left.next = root.right
+            root.right.next = root.next and root.next.left
+            dfs(root.left)
+            dfs(root.right)
         
-        while q:
-            current = q.popleft()
-            current[-1].next = None
-            
-            new = []
-            for i in range(len(current)):
-                if i < len(current) -1 :
-                    current[i].next = current[i+1]
-                if current[i].left:
-                    new.append(current[i].left)
-                if current[i].right:
-                    new.append(current[i].right)
-                
-            if len(new) > 0:
-                q.append(new)
-            
-            
+        dfs(root)
         return root
+        
