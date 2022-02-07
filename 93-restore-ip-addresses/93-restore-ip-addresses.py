@@ -2,12 +2,14 @@ class Solution:
     def restoreIpAddresses(self, s: str) -> List[str]:
         self.result = []
         
+        if len(s) < 4 or len(s) > 12:
+            return self.result
+        
         def dfs(li,index):
             if len(li) == 4:
                 if index == len(s):
                     self.result.append('.'.join(li))
                 return
-            
             
             for i in range(index,index+3):
                 if i < len(s):
