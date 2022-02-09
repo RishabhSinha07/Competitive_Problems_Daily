@@ -32,19 +32,17 @@ class Solution:
        SC : O(N)
      
         '''
-        
+        nums.sort()
         map = collections.defaultdict(bool)
         
         result = set()
         for i in nums[::-1]:
             val1, val2 = k+i, i-k
             if map[val1]:
-                temp = sorted([val1,i])
-                result.add(tuple(temp))
+                result.add((i,val1))
             if map[val2]:
-                temp = sorted([val2,i])
-                result.add(tuple(temp))
+                result.add((i,val2))
             
             map[i] = True
-            
+        
         return len(result)
