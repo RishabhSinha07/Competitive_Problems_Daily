@@ -30,7 +30,7 @@ class Solution:
           
           * The order does not matter here as the diff shoudl be absolute. 
        
-       TC : O(NlogN)
+       TC : O(N)
        SC : O(N)
      
         '''
