@@ -27,22 +27,21 @@ class Solution:
           - For 3 we want to check if (2+3 or 3-2) = (5,1) is present anywhere
             in the list. 
           ....... so on
+          
+          * The order does not matter here as the diff shoudl be absolute. 
        
-       TC : O(N)
+       TC : O(NlogN)
        SC : O(N)
      
         '''
-        nums.sort()
-        map = collections.defaultdict(bool)
         
-        result = set()
-        for i in nums[::-1]:
-            val1, val2 = k+i, i-k
-            if map[val1]:
-                result.add((i,val1))
-            if map[val2]:
-                result.add((i,val2))
-            
-            map[i] = True
+        map = collections.Counter(nums)
         
-        return len(result)
+        result = 0
+        for i in map:
+            val1 = k+i
+            if (k > 0 and map[val1]>0) or (k==0 and map[val1]>1):
+                result+=1
+        
+        
+        return result
