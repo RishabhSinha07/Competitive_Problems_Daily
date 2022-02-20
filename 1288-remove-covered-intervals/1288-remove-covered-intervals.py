@@ -14,6 +14,7 @@ class Solution:
         return len(intervals)-len(res)
     
     def removeCoveredIntervals(self, intervals: List[List[int]]) -> int:
+        # O(nlogn) Time Complexity
         intervals.sort(key = lambda x : x[0])
         result = 0
         cl, cr = intervals[0][0], intervals[0][1]
@@ -21,11 +22,7 @@ class Solution:
         for i in range(1,len(intervals)):
             left, right = intervals[i][0], intervals[i][1]
             
-            if left == cl and right == cr:
-                result+=1
-                continue
-            
-            if cl <= left and right <= cr:
+            if (left == cl and right == cr) or (cl <= left and right <= cr):
                 result+=1
                 continue
             
