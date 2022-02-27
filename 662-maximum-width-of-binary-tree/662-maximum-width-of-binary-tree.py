@@ -24,13 +24,7 @@ class Solution:
                     new_list.append((node.right,size*2+1))
             
             
-            if len(new_list) > 0:
-                li = new_list
-            else:
-                li = []
-            
-            
-            
+            li = new_list
 
         return result
                 
