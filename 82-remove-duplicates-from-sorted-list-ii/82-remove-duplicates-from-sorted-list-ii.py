@@ -13,10 +13,10 @@ class Solution:
         temp = answ = prev = ListNode(-101)
         
         while head:
-            if (head and head.next is None and head.val!=prev.val) or (head and head.next and head.val!=head.next.val and head.val!=prev.val):
-                temp.next = head
+            if (head.next is None and head.val!=prev.val) or (head.next and head.val!=head.next.val and head.val!=prev.val):
+                temp.next=head
                 temp=temp.next
-            prev = head
+            prev=head
             head=head.next
         
         temp.next = None
