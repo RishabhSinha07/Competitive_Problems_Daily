@@ -1,15 +1,11 @@
 class Solution:
     def find(self, graph, start, end, res, visited):
-        # print(start,end,visited,graph)
-        if start == end:
-            return res
-        if start in visited or start not in graph:
-            return -1
+        if start == end:return res
+        if start in visited or start not in graph:return -1
         visited[start]=1
         for i in graph[start]:
             temp = self.find(graph, i[0], end, res*i[1], visited)
             if temp != -1: return temp   
-        del visited[start]
         return -1
         
     def search(self, graph, q):
@@ -27,5 +23,4 @@ class Solution:
         for q in queries:
             res.append(self.search(aList,q))
             
-        
         return res
