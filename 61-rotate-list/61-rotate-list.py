@@ -44,6 +44,7 @@ class Solution:
         temp = return_pointer
         while temp and temp.next:
             temp = temp.next
-        temp.next = head
+        if temp:
+            temp.next = head
         
         return return_pointer
