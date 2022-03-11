@@ -18,9 +18,9 @@ class Solution:
             sizeOfLL+=1
             temp=temp.next
         
-        print(f"Size of the LL {sizeOfLL}")
+        # print(f"Size of the LL {sizeOfLL}")
         k%=sizeOfLL
-        print(f"Updated K value is {k}")
+        # print(f"Updated K value is {k}")
         
         if k == 0:
             return head
@@ -44,7 +44,6 @@ class Solution:
         temp = return_pointer
         while temp and temp.next:
             temp = temp.next
-        if temp:
-            temp.next = head
+        temp.next = head
         
         return return_pointer
