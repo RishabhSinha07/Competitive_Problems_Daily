@@ -4,6 +4,8 @@ class Solution:
         popIndex = 0
         
         for i in pushed:
+            if popIndex >= len(popped):
+                return False
             queue.append(i)
             while len(queue) > 0 and popIndex < len(popped):
                 if queue[-1] == popped[popIndex]:
