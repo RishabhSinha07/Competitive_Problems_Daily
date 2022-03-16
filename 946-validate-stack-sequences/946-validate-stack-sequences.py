@@ -1,7 +1,8 @@
 class Solution:
     def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
+        queue = collections.deque()
+        popIndex = 0
         
-        queue, popIndex = collections.deque(), 0
         for i in pushed:
             queue.append(i)
             while len(queue) > 0 and popIndex < len(popped):
@@ -10,8 +11,6 @@ class Solution:
                     popIndex+=1
                 else:
                     break
-        
-        if popIndex >= len(popped) and len(queue) == 0:
-            return True
-        
-        return False
+                    
+        return popIndex >= len(popped) and len(queue) == 0
+            
