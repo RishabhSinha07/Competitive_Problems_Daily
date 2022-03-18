@@ -17,25 +17,26 @@ class Solution:
         D, level = 1, collections.deque([[root]])
         while level:
             current = level.popleft()
+            
             if len(current) != D:
                 return False
+            
             temp = []
             for node in current:
                 if node:
                     temp.append(node.left)
                     temp.append(node.right)
-            print([x.val if x else 'None' for x in temp])
-            if len(temp) == 0:
-                D = D*2
-                continue
+            
+            D = D*2
+            if len(temp) == 0:continue
+                
             tag = False
             for node in temp:
-                if node and tag:
-                    return False
-                if node is None:
-                    tag = True
+                if node and tag:return False
+                if node is None:tag = True
+            # End of tree
             if current[0].left is None and current[0].right is None:
                 break
             level.append(temp)
-            D=D*2
+        
         return True
