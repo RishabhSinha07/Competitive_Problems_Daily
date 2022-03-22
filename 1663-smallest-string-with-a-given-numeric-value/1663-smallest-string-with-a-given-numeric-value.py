@@ -1,31 +1,26 @@
 class Solution:
-    def getScore(self, li):
-        score = 0
-        for i in li:
-            score+=(ord(i)-96)
-        return score
+    def alphaValue(self, alpha):
+        return ord(alpha)-96
     
     def getSmallestString(self, n: int, k: int) -> str:
-        alpha = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-        values = ['a']*n
-        current_score = self.getScore(values)
+        Lalpha = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+        result = ['a']*n
+        current_score = n
         
-        if current_score > k:
-            return -1
-        
-        for i in range(len(values)-1,-1,-1):
+        for i in range(len(result)-1,-1,-1):
             if current_score == k:
-                return "".join(values)
-            index = 0
+                return "".join(result)
+            
             if k-current_score > 26:
-                current_score-=(ord(values[i])-96)
-                values[i]=alpha[-1]
-                current_score+=(ord(values[i])-96)
+                current_score-=self.alphaValue(result[i])
+                result[i]=Lalpha[-1]
+                current_score+=self.alphaValue(result[i])
             else:
+                index = 0
                 while current_score < k and index < 26:
-                    current_score-=(ord(values[i])-96)
-                    values[i]=alpha[index]
-                    current_score+=(ord(values[i])-96)
+                    current_score-=self.alphaValue(result[i])
+                    result[i]=Lalpha[index]
+                    current_score+=self.alphaValue(result[i])
                     index+=1
         
-        return "".join(values)
+        return "".join(result)
