@@ -9,7 +9,7 @@ class Solution:
         result = []
         
         def dfs(node):
-            if node is None:
+            if node is None or len(result) > k-1:
                 return
             dfs(node.left)
             result.append(node.val)
