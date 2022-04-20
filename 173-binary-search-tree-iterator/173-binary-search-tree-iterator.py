@@ -15,12 +15,12 @@ class BSTIterator:
         if node is None:
             return
         self.iot(node.left)
-        self.li.append(node)
+        self.li.append(node.val)
         self.iot(node.right)
     
     def next(self) -> int:
         self.pos+=1
-        return self.li[self.pos-1].val
+        return self.li[self.pos-1]
 
     def hasNext(self) -> bool:
         if self.pos < len(self.li):
