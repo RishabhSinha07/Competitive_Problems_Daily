@@ -17,7 +17,7 @@ class BSTIterator:
         self.push(node.left)
 
     def next(self) -> int:
-        temp = self.stack.pop(-1)
+        temp = self.stack.pop()
         self.push(temp.right)
         return temp.val
 
