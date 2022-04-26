@@ -9,7 +9,7 @@ class Solution:
         self.flag = True
         
         def dfs(node):
-            if node is None:
+            if node is None or self.flag == False:
                 return 0
             
             lc = dfs(node.left)
