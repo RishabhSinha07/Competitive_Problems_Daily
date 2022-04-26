@@ -16,7 +16,6 @@ class Solution:
             rc = dfs(node.right)
             
             if abs(lc-rc) > 1:
-                print(lc,rc,node.val)
                 self.flag = False
                 
             return max(lc,rc)+1
