@@ -1,6 +1,6 @@
 class Solution:
     def maxOperations(self, nums: List[int], k: int) -> int:
-        data, count = collections.defaultdict(int), 0
+        data, count = defaultdict(int), 0
         for i in nums:
             if data[i]>0:
                 count+=1
