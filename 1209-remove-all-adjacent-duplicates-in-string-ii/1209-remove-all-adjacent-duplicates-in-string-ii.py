@@ -4,17 +4,20 @@ class Solution:
         
         for i in s:
             if len(stack)>0 and stack[-1][1] == k:
-                for _ in range(k):
-                    stack.pop()
+                stack.pop()
             
             if len(stack) == 0 or stack[-1][0] != i:
                 stack.append([i,1])
             else:
-                stack.append([i,stack[-1][1]+1])
+                val = stack[-1][1]+1
+                stack.pop()
+                stack.append([i,val])
         
         if len(stack)>0 and stack[-1][1] == k:
-                for _ in range(k):
-                    stack.pop()
+            stack.pop()
         
-        return ''.join(x[0] for x in stack)    
+        res = ""
+        for i in stack:
+            res+=i[0]*i[1]
         
+        return res
