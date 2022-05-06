@@ -9,9 +9,7 @@ class Solution:
             if len(stack) == 0 or stack[-1][0] != i:
                 stack.append([i,1])
             else:
-                val = stack[-1][1]+1
-                stack.pop()
-                stack.append([i,val])
+                stack[-1][1]+=1
         
         if len(stack)>0 and stack[-1][1] == k:
             stack.pop()
