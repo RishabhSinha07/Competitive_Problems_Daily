@@ -9,8 +9,6 @@ Return a list of all possible valid combinations. The list must not contain the 
 k = 3 and N = 7
 -> 1,2,4
 
-TC : O(9**k)
-SC : O(1) considering we don't care about res
 """
 
 class Solution:
