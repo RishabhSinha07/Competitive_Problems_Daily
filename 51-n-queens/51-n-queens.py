@@ -9,13 +9,9 @@ class Solution:
         
         def populate(temp, cx, cy):
             dp = deepcopy(temp)
-            for i in range(cx, n):
+            for i in range(0, n):
                 dp[i][cy] = 1
-            for i in range(0, cx):
-                dp[i][cx] = 1
-            for i in range(cy, n):
-                dp[cx][i] = 1
-            for i in range(0, cy):
+            for i in range(0, n):
                 dp[cx][i] = 1
             
             nx, ny = cx, cy
@@ -45,9 +41,6 @@ class Solution:
             return dp
         
         def bT(dp, row, qq):
-            # for i in qq:
-            #     print(i)
-            # print('___________')
             if row == n:
                 temp = []
                 for i in qq:
