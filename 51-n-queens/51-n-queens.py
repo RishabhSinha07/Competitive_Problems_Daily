@@ -50,8 +50,7 @@ class Solution:
             for i in range(len(dp[row])):
                 if dp[row][i] == 0:
                     qq[row][i] = 'Q'
-                    temp = populate(dp, row, i)
-                    bT(temp, row+1, qq)
+                    bT(populate(dp, row, i), row+1, qq)
                     qq[row][i] = '.'
         
         bT(dp, 0, qq)
