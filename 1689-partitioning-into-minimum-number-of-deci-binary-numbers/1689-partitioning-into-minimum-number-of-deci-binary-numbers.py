@@ -31,8 +31,8 @@ class Solution:
         Each number can be sum of 1's. Therefore we can check the max number of values required for any single number and return
         """
         
-        res = 0
+        res = '0'
         for i in n:
-            res = max(res, int(i))
+            res = max(res, i)
         
-        return res
+        return int(res)
